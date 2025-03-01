@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-03-2025 a las 18:11:59
+-- Tiempo de generación: 01-03-2025 a las 19:13:28
 -- Versión del servidor: 9.1.0
 -- Versión de PHP: 8.3.14
 
@@ -68,11 +68,20 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `pedido_id` int NOT NULL AUTO_INCREMENT,
   `usuario_id` int NOT NULL,
   `producto_id` int NOT NULL,
-  `producto_fecha` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `pedido_fecha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`pedido_id`),
   KEY `FK_usuario_id` (`usuario_id`),
   KEY `FK_producto_id` (`producto_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`pedido_id`, `usuario_id`, `producto_id`, `pedido_fecha`) VALUES
+(5, 3, 2, '01/03/2025'),
+(6, 3, 2, '01/03/2025'),
+(7, 3, 2, '01/03/2025');
 
 -- --------------------------------------------------------
 
@@ -109,10 +118,21 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_id` int NOT NULL AUTO_INCREMENT,
   `usuario_nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `usuario_direccion` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `usuario_cp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `usuario_estado` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `usuario_municipio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `usuario_colonia` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `usuario_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `usuario_telefono` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`usuario_id`, `usuario_nombre`, `usuario_direccion`, `usuario_cp`, `usuario_estado`, `usuario_municipio`, `usuario_colonia`, `usuario_email`, `usuario_telefono`) VALUES
+(3, 'Juan Pérez', 'Cerro Arenal 27 B', '54190', 'Estado de México', 'Tlalnepantla de Baz', 'Dr. Jorge Jimenez Cantú', 'juan@example.com', '123456789');
 
 --
 -- Restricciones para tablas volcadas
