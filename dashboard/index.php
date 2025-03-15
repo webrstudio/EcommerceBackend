@@ -17,7 +17,7 @@
                     <i class="bi bi-truck optionCardIcon"></i>
                     <span>Gestionar pedidos</span>
                 </a>
-                <a href='/' class="optionCard boxShadow borderRadius container">
+                <a href='./products/index.php' class="optionCard boxShadow borderRadius container">
                     <i class="bi bi-box optionCardIcon"></i>
                     <span>Gestionar productos</span>
                 </a>
