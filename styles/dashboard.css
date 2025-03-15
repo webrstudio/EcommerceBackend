@@ -1,0 +1,23 @@
+.optionWrapper{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: center;
+}
+.optionCard{
+    align-items: center;
+    color:var(--blue-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    width:100%;
+}
+.optionCard:hover{
+    background: var(--blue-primary);
+    color:var(--white-primary);
+    transition: all 500ms ease;
+}
+.optionCardIcon{
+    font-size:1.5rem;
+}
