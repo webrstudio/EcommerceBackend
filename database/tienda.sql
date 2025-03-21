@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `marcas` (
   `marca_id` int NOT NULL AUTO_INCREMENT,
   `marca_nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`marca_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `marcas`
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`pedido_id`),
   KEY `FK_usuario_id` (`usuario_id`),
   KEY `FK_producto_id` (`producto_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `marca_id` int NOT NULL,
   PRIMARY KEY (`producto_id`),
   KEY `FK_marca_id` (`marca_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `usuario_telefono` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
