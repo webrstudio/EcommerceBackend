@@ -20,22 +20,24 @@ try {
         // Leer datos JSON del frontend
         $data = json_decode(file_get_contents("php://input"), true);
 
-        if (!isset($data['usuario_nombre'], $data['usuario_direccion'], $data['usuario_cp'], $data['usuario_estado'], $data['usuario_municipio'], $data['usuario_colonia'], $data['usuario_email'], $data['usuario_telefono'], $data['usuario_carrito']) || !is_array($data['usuario_carrito'])) {
+        if (!isset($data['usuario_nombre'], $data['usuario_calle'], $data['usuario_numero_exterior'], $data['usuario_cp'], $data['usuario_estado'], $data['usuario_municipio'], $data['usuario_colonia'], $data['usuario_email'], $data['usuario_telefono'], $data['usuario_referencia'], $data['usuario_carrito']) || !is_array($data['usuario_carrito'])) {
             http_response_code(400);
             echo json_encode(["error" => "Datos inválidos o incompletos"]);
             exit;
         }
 
         // Insertar usuario en la tabla `usuarios`
-        $stmtUser = $pdo->prepare("INSERT INTO usuarios (usuario_nombre, usuario_direccion, usuario_cp, usuario_estado, usuario_municipio, usuario_colonia, usuario_email, usuario_telefono) VALUES (:usuario_nombre, :usuario_direccion, :usuario_cp, :usuario_estado, :usuario_municipio, :usuario_colonia, :usuario_email, :usuario_telefono)");
+        $stmtUser = $pdo->prepare("INSERT INTO usuarios (usuario_nombre, usuario_calle, usuario_numero_exterior, usuario_cp, usuario_estado, usuario_municipio, usuario_colonia, usuario_email, usuario_telefono, usuario_referencia) VALUES (:usuario_nombre, :usuario_calle, :usuario_numero_exterior, :usuario_cp, :usuario_estado, :usuario_municipio, :usuario_colonia, :usuario_email, :usuario_telefono, :usuario_referencia)");
         $stmtUser->bindParam(":usuario_nombre", $data['usuario_nombre']);
-        $stmtUser->bindParam(":usuario_direccion", $data['usuario_direccion']);
+        $stmtUser->bindParam(":usuario_calle", $data['usuario_calle']);
+        $stmtUser->bindParam(":usuario_numero_exterior", $data['usuario_numero_exterior']);
         $stmtUser->bindParam(":usuario_cp", $data['usuario_cp']);
         $stmtUser->bindParam(":usuario_estado", $data['usuario_estado']);
         $stmtUser->bindParam(":usuario_municipio", $data['usuario_municipio']);
         $stmtUser->bindParam(":usuario_colonia", $data['usuario_colonia']);
         $stmtUser->bindParam(":usuario_email", $data['usuario_email']);
         $stmtUser->bindParam(":usuario_telefono", $data['usuario_telefono']);
+        $stmtUser->bindParam(":usuario_referencia", $data['usuario_referencia']);
         
         $stmtUser->execute();
         $usuario_id = $pdo->lastInsertId();
