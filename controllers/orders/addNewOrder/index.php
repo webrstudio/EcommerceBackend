@@ -57,6 +57,10 @@ try {
             $stmtPedido->bindParam(":producto_id", $item['producto_id']);
             $stmtPedido->bindParam(":pedido_fecha", $item['pedido_fecha']);
             $stmtPedido->execute();
+
+            $stmtUpdateInventario = $pdo->prepare("UPDATE productos SET producto_inventario = producto_inventario - 1 WHERE producto_id = :producto_id");
+            $stmtUpdateInventario->bindParam(":producto_id", $item['producto_id']);
+            $stmtUpdateInventario->execute();
         }
 
         $pdo->commit(); // Confirmar transacción
