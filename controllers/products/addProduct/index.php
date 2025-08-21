@@ -30,7 +30,7 @@ try {
         $marca_id = $_POST['marca_id'];
         $imagen = $_FILES['producto_imagen'];
 
-        $directorio = "imagenes/";
+        $directorio = realpath(__DIR__.'/../../../')."/imagenes/";
         if (!is_dir($directorio)) {
             mkdir($directorio, 0777, true);
         }
@@ -43,7 +43,7 @@ try {
             throw new Exception("Error al subir la imagen");
         }
 
-        $url_imagen = "http://localhost/ecommerce-backend/" . $ruta_destino;
+        $url_imagen = "http://localhost/ecommerce-backend/imagenes/" . $nombre_archivo;
 
         $stmtUser = $pdo->prepare("INSERT INTO productos (producto_nombre, producto_precio, producto_imagen, marca_id) 
                                    VALUES (:producto_nombre, :producto_precio, :producto_imagen, :marca_id)");
